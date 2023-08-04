@@ -28,7 +28,7 @@ bool shakeLeft(int * a_arrayToSort, size_t a_size)
     {
         if(a_arrayToSort[i] < a_arrayToSort[i - 1])
         {
-            swap(&a_arrayToSort[i], &a_arrayToSort[i + 1]);
+            swap(&a_arrayToSort[i], &a_arrayToSort[i - 1]);
             isShakeHadSwap = true;
         }
     }
@@ -63,7 +63,7 @@ void shakeSort(int * a_arrayToSort, size_t a_size)
 
 int main()
 {
-    int arrayToSort[] = {8, 5, 11, 9 , 25, 16 , 17};
+    int arrayToSort[] = {8, 5, 11, 9 , 25, 16 , 17, 1};
     shakeSort(arrayToSort, sizeof(arrayToSort)/ sizeof(int));
     return 0;
 }

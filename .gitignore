@@ -14,3 +14,7 @@
 core
 depends
 .vscode
+.vcxproj
+.filters
+.sln
+CmakeCache.txt

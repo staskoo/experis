@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    CDoubleLinkedList doubleList1;
+    CDoubleLinkedList<int> doubleList1;
     doubleList1.PushFront(3);
     doubleList1.PushFront(4);
     doubleList1.PushFront(5);
@@ -16,7 +16,7 @@ int main()
     }
     
 
-    CDoubleLinkedList doubleList2;
+    CDoubleLinkedList<int> doubleList2;
     doubleList2.PushFront(3);
     doubleList2.PushFront(4);
     doubleList2.PushFront(5);

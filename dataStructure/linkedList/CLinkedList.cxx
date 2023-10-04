@@ -4,7 +4,7 @@
 using namespace std;
 
 template<class T>
-CLinkedList<T>::CNode::CNode(T m_value):
+CLinkedList<T>::CNode::CNode(T& m_value):
 m_next(0),
 m_value(m_value)
 {
@@ -32,7 +32,7 @@ CLinkedList<T>::~CLinkedList()
 }
 
 template<class T>
-void CLinkedList<T>::Push(int a_value)
+void CLinkedList<T>::Push(T a_value)
 {
     CNode* newNode = new CNode(a_value);
     newNode->m_next = m_head.m_next;

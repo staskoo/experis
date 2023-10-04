@@ -7,7 +7,7 @@ class CLinkedList{
     class CNode
     {
         public:
-            CNode(T m_value);
+            CNode(T& m_value);
             CNode();
 
             CNode* m_next;
@@ -17,7 +17,7 @@ class CLinkedList{
         CLinkedList();
         ~CLinkedList();
 
-        void Push(int a_value);
+        void Push(T a_value);
         void Pop();
         int Front();
         bool Empty() const;

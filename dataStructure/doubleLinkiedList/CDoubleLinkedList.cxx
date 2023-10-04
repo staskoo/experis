@@ -3,31 +3,37 @@
 
 using namespace std;
 
-CDoubleLinkedList::CNode::CNode(int a_value):
+template<class T>
+CDoubleLinkedList<T>::CNode::CNode(T& a_value):
 m_next(NULL),
 m_prev(NULL),
 m_value(a_value)
 {
-
 }
 
 
-CDoubleLinkedList::CNode::CNode()
+template<class T>
+CDoubleLinkedList<T>::CNode::CNode()
 {
-
 }
 
-CDoubleLinkedList::CDoubleLinkedList()
+
+template<class T>
+CDoubleLinkedList<T>::CDoubleLinkedList()
 {
     m_head.m_next = &m_tail;
     m_tail.m_prev = &m_head;
 }
 
-CDoubleLinkedList::~CDoubleLinkedList()
+
+template<class T>
+CDoubleLinkedList<T>::~CDoubleLinkedList()
 {
 }
 
-void CDoubleLinkedList::PushFront(int a_val)
+
+template<class T>
+void CDoubleLinkedList<T>::PushFront(T a_val)
 {
     CNode* newNode = new CNode(a_val);
     newNode->m_next = m_head.m_next;
@@ -38,7 +44,8 @@ void CDoubleLinkedList::PushFront(int a_val)
 }
 
 
-void CDoubleLinkedList::PopFront()
+template<class T>
+void CDoubleLinkedList<T>::PopFront()
 {
     if(m_head.m_next != &m_tail)
     {
@@ -49,13 +56,15 @@ void CDoubleLinkedList::PopFront()
 }
 
 
-bool CDoubleLinkedList::Empty() const
+template<class T>
+bool CDoubleLinkedList<T>::Empty() const
 {
     return m_head.m_next == &m_tail ? true : false;
 }
 
 
-int CDoubleLinkedList::Front()
+template<class T>
+int CDoubleLinkedList<T>::Front()
 {
     int val = 0;
     if(m_head.m_next != &m_tail)
@@ -65,7 +74,8 @@ int CDoubleLinkedList::Front()
     return val;
 }
 
-void CDoubleLinkedList::PopBack()
+template<class T>
+void CDoubleLinkedList<T>::PopBack()
 {
     if(m_head.m_next != &m_tail)
     {
@@ -75,7 +85,8 @@ void CDoubleLinkedList::PopBack()
     }
 }
 
-int CDoubleLinkedList::Back()
+template<class T>
+int CDoubleLinkedList<T>::Back()
 {
     int val = 0;
     if(m_head.m_next != &m_tail)

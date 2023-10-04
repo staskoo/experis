@@ -1,13 +1,13 @@
 #ifndef CLINKEDLIST_H
 #define CLINKEDLIST_H
 
-
+template<class T>
 class CDoubleLinkedList
 {
     class CNode
     {
         public:
-            CNode(int a_value);
+            CNode(T& a_value);
             CNode();
 
             CNode* m_next;
@@ -18,7 +18,7 @@ class CDoubleLinkedList
         CDoubleLinkedList();
         ~CDoubleLinkedList();
 
-        void PushFront(int a_value);
+        void PushFront(T a_value);
         void PopFront();
         void PopBack();
         int Front();

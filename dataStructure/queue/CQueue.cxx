@@ -1,4 +1,3 @@
-#include<iostream>
 #include "CQueue.h"
 
 using namespace std;
@@ -17,6 +16,11 @@ m_endOfQueue(0)
 template<class T>
 CQueue<T>::~CQueue()
 {
+    for(unsigned int element = 0; element < m_numOfElements; element++)
+    {
+        delete m_queue[(m_beginOfQueue + element) % m_sizeOfQueue];
+    }
+    delete[] m_queue;
 }
 
 
@@ -26,6 +30,7 @@ void CQueue<T>::PopFront()
     if(m_numOfElements > 0)
     {
         --m_numOfElements;
+        delete m_queue[m_beginOfQueue];
         m_beginOfQueue =  (m_beginOfQueue + 1 ) % m_sizeOfQueue;
     }
 }
@@ -44,8 +49,7 @@ void CQueue<T>::PushBack(const T& a_element)
 {
     if(m_numOfElements < m_sizeOfQueue)
     {
-        T* element = new T(a_element);
-        m_queue[m_endOfQueue] = element;
+        m_queue[m_endOfQueue] = new T(a_element);
         ++m_numOfElements;
         m_endOfQueue =  (m_endOfQueue + 1 ) % m_sizeOfQueue;
     }

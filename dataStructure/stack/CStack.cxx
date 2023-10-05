@@ -28,12 +28,8 @@ void CStack<T>::Pop()
 {
     if(m_numOfElements > 0)
     {
-        --m_numOfElements;
-        T* tempObject = m_stack[m_numOfElements];
-        delete tempObject;
-        
-    }
-    
+        delete m_stack[--m_numOfElements];     
+    } 
 }
 
 
@@ -48,8 +44,7 @@ T& CStack<T>::Top()
 template<class T>
 void CStack<T>::Push(const T& a_element)
 {
-    T* tempObject = new T(a_element);
-    m_stack[m_numOfElements] = tempObject;
+    m_stack[m_numOfElements] = new T(a_element);
     ++m_numOfElements;
 }
 

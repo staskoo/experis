@@ -1,3 +1,8 @@
+Try to put a blank line before...
+
+Heading
+...and after a heading.
+
 projects to practise in c/c++
 
 cmake commands:

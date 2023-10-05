@@ -9,21 +9,25 @@ class CDoubleLinkedList
         public:
             CNode(T& a_value);
             CNode();
+            CNode(const T& a_value);
 
             CNode* m_next;
             CNode* m_prev;
-            int m_value;
+            T m_value;
     };
     public:
         CDoubleLinkedList();
         ~CDoubleLinkedList();
 
-        void PushFront(T a_value);
+        void PushFront(const T& a_value);
+        void PushBack(const T& a_value);
         void PopFront();
         void PopBack();
-        int Front();
-        int Back();
+        T& Front();
+        T& Back();
         bool Empty() const;
+
+        T defaultVal;
     private:
         CNode m_head;
         CNode m_tail;

@@ -26,5 +26,15 @@ int main()
         doubleList2.PopBack();
     }
 
+    CDoubleLinkedList<char> doubleList3;
+    doubleList3.PushBack('3');
+    doubleList3.PushBack('4');
+    doubleList3.PushBack('5');
+    while(doubleList3.Empty() == false)
+    {
+        cout << doubleList3.Back() << "\n";
+        doubleList3.PopBack();
+    }
+
     return 0;
 }

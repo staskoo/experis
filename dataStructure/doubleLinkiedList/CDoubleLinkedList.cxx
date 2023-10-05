@@ -11,6 +11,13 @@ m_value(a_value)
 {
 }
 
+template<class T>
+CDoubleLinkedList<T>::CNode::CNode(const T& a_value):
+m_next(NULL),
+m_prev(NULL),
+m_value(a_value)
+{
+}
 
 template<class T>
 CDoubleLinkedList<T>::CNode::CNode()
@@ -33,14 +40,29 @@ CDoubleLinkedList<T>::~CDoubleLinkedList()
 
 
 template<class T>
-void CDoubleLinkedList<T>::PushFront(T a_val)
+void CDoubleLinkedList<T>::PushFront(const T& a_value)
 {
-    CNode* newNode = new CNode(a_val);
+    CNode* newNode = new CNode(a_value);
     newNode->m_next = m_head.m_next;
     m_head.m_next = newNode;
 
     newNode->m_prev = &m_head;
     m_head.m_next->m_next->m_prev = m_head.m_next;
+}
+
+
+template<class T>
+void CDoubleLinkedList<T>::PushBack(const T& a_value)
+{
+    CNode* newNode = new CNode(a_value);
+
+    newNode->m_next = &m_tail;
+    newNode->m_prev = m_tail.m_prev;
+
+    m_tail.m_prev = newNode;
+
+    
+    m_tail.m_prev->m_prev->m_next = m_tail.m_prev;
 }
 
 
@@ -52,6 +74,7 @@ void CDoubleLinkedList<T>::PopFront()
         CNode* holder = m_head.m_next;
         m_head.m_next = m_head.m_next->m_next;
         holder->m_next->m_prev = &m_head;
+        delete holder;
     }
 }
 
@@ -64,14 +87,9 @@ bool CDoubleLinkedList<T>::Empty() const
 
 
 template<class T>
-int CDoubleLinkedList<T>::Front()
+T& CDoubleLinkedList<T>::Front()
 {
-    int val = 0;
-    if(m_head.m_next != &m_tail)
-    {
-        val = m_head.m_next->m_value;
-    }
-    return val;
+    return m_head.m_next != &m_tail ? m_head.m_next->m_value : defaultVal;
 }
 
 template<class T>
@@ -82,16 +100,12 @@ void CDoubleLinkedList<T>::PopBack()
         CNode* holder = m_tail.m_prev;
         m_tail.m_prev = m_tail.m_prev->m_prev;
         holder->m_prev->m_next = &m_tail;
+        delete holder;
     }
 }
 
 template<class T>
-int CDoubleLinkedList<T>::Back()
+T& CDoubleLinkedList<T>::Back()
 {
-    int val = 0;
-    if(m_head.m_next != &m_tail)
-    {
-        val = m_tail.m_prev->m_value;
-    }
-    return val;
+    return m_head.m_next != &m_tail ? m_tail.m_prev->m_value : defaultVal;
 }
